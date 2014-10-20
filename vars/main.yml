@@ -1,6 +1,6 @@
 ---
 apache_conf_dir: /etc/httpd/conf
-openam_server_url: 'httpd://openam.example.com:80/openam'
+openam_server_url: 'http://openam.example.com:80/openam'
 agent_url: 'http://agent.example.com:80/'
 agent_profile_name: test
 agent_profile_password: password

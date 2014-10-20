@@ -23,3 +23,11 @@ AGENT_URL= http://agent-test.example.com:80/
 AGENT_PROFILE_NAME= test
 AGENT_PASSWORD_FILE= /tmp/openam_agent_pwd.txt
 ```
+
+## Vagrant
+
+You can test on Vagrant virtual machine.
+
+```
+vagrant up
+```
