@@ -1,0 +1,23 @@
+---
+- name: Ensure dependencies are installed
+  yum: name={{ item }} state=installed
+  with_items:
+    - unzip
+
+- name: Ensure web agent for apache is downloaded
+  get_url: url=http://download.forgerock.org/downloads/openam/webagents/nightly/Linux/apache_v22_Linux_64_agent_4.0.0-SNAPSHOT.zip dest=/opt/
+
+- name: Ensure agent is unzipeed
+  shell: creates=/opt/web_agents /usr/bin/unzip /opt/apache_v22_Linux_64_agent_4.0.0-SNAPSHOT.zip
+
+- name: Ensure agent password file is present
+  template: src=templates/pwd.txt.j2 dest=/tmp/openam_agent_pwd.txt mode=0400
+
+- name: Ensure agent answer file is present
+  template: src=templates/answer.txt.j2 dest=/tmp/openam_agent_answer.txt mode=0400
+
+- name: Ensure Apache is stopped
+  service: name=httpd state=stopped
+
+- name: Ensure agent is installed
+  shell:  /opt/web_agents/apache22_agent/bin/agentadmin --acceptLicense --install --useResponse=/tmp/openam_agent_answer.txt
