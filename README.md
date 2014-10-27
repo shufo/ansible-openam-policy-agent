@@ -16,17 +16,16 @@ ansible-playbook site.yml
 ## vars
 
 ```vars/main.yml
-# Agent User Response File
-CONFIG_DIR= /etc/httpd/conf
-AM_SERVER_URL= http://openam-proxy-test.example.com:80/openam
-AGENT_URL= http://agent-test.example.com:80/
-AGENT_PROFILE_NAME= test
-AGENT_PASSWORD_FILE= /tmp/openam_agent_pwd.txt
+apache_conf_dir: /etc/httpd/conf
+openam_server_url: 'http://openam.example.com:80/openam'
+agent_url: 'http://agent.example.com:80/'
+agent_profile_name: test
+agent_profile_password: password
 ```
 
 ## Vagrant
 
-You can test on Vagrant virtual machine.
+You can test on Vagrant virtual machine. (Requires Ansible)
 
 ```
 vagrant up
